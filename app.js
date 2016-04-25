@@ -3,6 +3,7 @@
 
   var path = require('path');
   var express = require('express');
+  var config = require("./config.json");
   var app = express();
   var server = require('http').createServer(app);
   var io = require('socket.io')(server);
@@ -11,7 +12,7 @@
 
   io.on('connection', connection);
   app.use(express.static(path.join(__dirname, '/public')));
-  app.set('port', 1344);
+  app.set('port', config.port);
   server.listen(app.get('port'), listen);
 
   function listen() {

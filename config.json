@@ -1,3 +1,5 @@
 {
-  "base": "/myapp/test/"
+  "port": 4022,
+  "base": "$HOME/remo/test/",
+  "allowed": ["mocha"]
 }

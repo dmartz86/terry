@@ -6,6 +6,7 @@ module.exports = (function featuresFn() {
 
   function features(callback) {
     return fs.readdir(config.base, function readdir(err, files) {
+      files = files || [];
       callback(files.map(reviewFile));
     });
   }

@@ -51,7 +51,7 @@
               <i class="fa fa-2x fa-folder" ng-show="file.isDir"></i>
               <i class="fa fa-2x fa-file-text" ng-hide="file.isDir"></i>
             </td>
-            <td><span ng-bind="file.name"></span></td>
+            <td><span ng-bind="file.name" ng-click="setContent(file.name, file.content); setView('show')"></span></td>
             <td><span ng-bind="file.features"></span></td>
             <td><span ng-bind="file.scenarios"></span></td>
             <td><span ng-bind="file.steps"></span></td>
@@ -64,7 +64,7 @@
             </td>
           </tr>
           <tr ng-show="!files.length">
-            <td colspan="6" class="text-center">No data</td>
+            <td colspan="8" class="text-center">No data</td>
           </tr>
         </tbody>
       </table>
@@ -74,21 +74,13 @@
         <pre class="col-md-12 col-xs-12 pre-scrollable" ng-bind="content"></pre>
       </div>
       <div class="col-md-4 col-xs-12">
-        <a class="col-md-3 col-xs-3 btn btn-primary">
-          <i class="fa fa-list" ng-click="setView('list')"></i>
-          <span  ng-hide="desktop"> Back</span>
+        <a class="col-md-6 col-xs-6 btn btn-primary" ng-click="setView('list')">
+          <i class="fa fa-list"></i>
+          <span> Back to List</span>
         </a>
-        <a class="col-md-3 col-xs-3 btn btn-primary"> 
-          <i class="fa fa-terminal" ng-click="test('mocha')"></i>
-          <span  ng-hide="desktop"> Mocha</span>
-        </a>
-        <a class="col-md-3 col-xs-3 btn btn-primary"> 
-          <i class="fa fa-dashboard" ng-click="test('protractor')"></i>
-          <span  ng-hide="desktop"> Protractor</span>
-        </a>
-        <a class="col-md-3 col-xs-3 btn btn-primary">
-          <i class="fa fa-times"></i>
-          <span  ng-hide="desktop"> Delete</span>
+        <a class="col-md-6 col-xs-6 btn btn-primary" ng-click="test('mocha')"> 
+          <i class="fa fa-terminal"></i>
+          <span> Run Mocha</span>
         </a>
         <pre class="pre-scrollable" ng-bind="tail"></pre>
       </div>

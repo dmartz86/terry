@@ -5,7 +5,10 @@ module.exports = (function tailFn() {
   var config = require('./config');
 
   function tail(socket, program, path) {
-    // TOOD: filter safe programs like mocha, protractor
+    if (!config.allowed.find(function (ele) { return ele===program})) {
+      return socket.emit('error', 'Command not allowed');
+    }
+    
     path = config.base + '/' + path;
 
     var command = spawn(program, [path]);
