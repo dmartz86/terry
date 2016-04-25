@@ -9,4 +9,4 @@ Test Executor Runner
 
 ## Preview
 
-![Image](https://lh3.googleusercontent.com/77ewl9c7CSo0wEYwdYo9tG_87Ud_RiLMzHrLCYzmPI0YAOaIaDwlvEPfIh46hBudIU2lng1Dpw=w1680-h1050-rw-no)
+![Image](https://lh3.googleusercontent.com/UZpoCVh2JeLTh25MBeVKjLWO-wKJuoXZszAndobOUj_UntnyPOEILnr4U2xWCAGwpyNMHQ17hg=w1680-h1050-rw-no)
