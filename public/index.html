@@ -1,0 +1,100 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.6/superhero/bootstrap.css"></link>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+<link rel="stylesheet" href="/assets/style.css">
+<title>Terry</title>
+<div class="container" ng-app="pexApp">
+  <h1 class="text-center">Test Executor Runner</h1>
+  <div class="row" ng-controller="MainController">
+    <div class="col-md-12" ng-show="view === 'list'">
+      <div class="row">
+        <div class="form-group">
+          <label class="col-xs-3 col-md-2 control-label">Filter</label>
+          <div class="col-xs-9 col-md-10">
+            <input type="text" class="form-control" placeholder="search" ng-model="search">
+          </div>
+        </div>
+      </div>
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th ng-click="sortBy('isDir')">
+              <i class="fa fa-2x fa-file"></i>
+              <span ng-show="desktop">Type</span>
+            </th>
+            <th ng-click="sortBy('name')">Name</th>
+            <th ng-click="sortBy('features')">
+              <i class="fa fa-2x fa-bars"></i>
+              <span ng-show="desktop">Features</span>
+            </th>
+            <th ng-click="sortBy('scenarios')">
+              <i class="fa fa-2x fa-tasks"></i>
+              <span ng-show="desktop">Scnearios</span>
+            </th>
+            <th ng-click="sortBy('steps')">
+              <i class="fa fa-2x fa-ellipsis-v"></i>
+              <span ng-show="desktop">Steps</span>
+            </th>
+            <th ng-click="sortBy('describes')">
+              <i class="fa fa-2x fa-wpforms"></i>
+              <span ng-show="desktop">Describes</span>
+            </th>
+            <th ng-click="sortBy('its')">
+              <i class="fa fa-2x fa-list"></i>
+              <span ng-show="desktop">Its</span>
+            </th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody class="pre-scrollable">
+          <tr ng-repeat="file in files | filter: search | orderBy: sort : inverse">
+            <td>
+              <i class="fa fa-2x fa-folder" ng-show="file.isDir"></i>
+              <i class="fa fa-2x fa-file-text" ng-hide="file.isDir"></i>
+            </td>
+            <td><span ng-bind="file.name"></span></td>
+            <td><span ng-bind="file.features"></span></td>
+            <td><span ng-bind="file.scenarios"></span></td>
+            <td><span ng-bind="file.steps"></span></td>
+            <td><span ng-bind="file.describes"></span></td>
+            <td><span ng-bind="file.its"></span></td>
+            <td>
+              <div ng-hide="file.isDir">
+                <a class="btn"><i class="fa fa-eye" ng-click="setContent(file.name, file.content); setView('show')"></i></a>
+              </div>
+            </td>
+          </tr>
+          <tr ng-show="!files.length">
+            <td colspan="6" class="text-center">No data</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-12" ng-show="view === 'show'">
+      <div class="col-md-8">
+        <pre class="col-md-12 col-xs-12 pre-scrollable" ng-bind="content"></pre>
+      </div>
+      <div class="col-md-4 col-xs-12">
+        <a class="col-md-3 col-xs-3 btn btn-primary">
+          <i class="fa fa-list" ng-click="setView('list')"></i>
+          <span  ng-hide="desktop"> Back</span>
+        </a>
+        <a class="col-md-3 col-xs-3 btn btn-primary"> 
+          <i class="fa fa-terminal" ng-click="test('mocha')"></i>
+          <span  ng-hide="desktop"> Mocha</span>
+        </a>
+        <a class="col-md-3 col-xs-3 btn btn-primary"> 
+          <i class="fa fa-dashboard" ng-click="test('protractor')"></i>
+          <span  ng-hide="desktop"> Protractor</span>
+        </a>
+        <a class="col-md-3 col-xs-3 btn btn-primary">
+          <i class="fa fa-times"></i>
+          <span  ng-hide="desktop"> Delete</span>
+        </a>
+        <pre class="pre-scrollable" ng-bind="tail"></pre>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.5/socket.io.min.js"></script>
+<script src="assets/app.js"></script>

@@ -1,0 +1,30 @@
+{
+  "private": true,
+  "name": "terry",
+  "version": "1.0.0",
+  "description": "Test Executor Runner",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "auto",
+    "test",
+    "tool"
+  ],
+  "author": "Daniel Martinez",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.13.4",
+    "socket.io": "^1.4.5"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/dmartz86/terry.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dmartz86/terry/issues"
+  },
+  "homepage": "https://github.com/dmartz86/terry#readme"
+}
